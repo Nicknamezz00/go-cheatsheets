@@ -31,7 +31,6 @@ import (
 )
 
 type Message struct {
-	content string
 }
 
 type Subscription struct {
@@ -44,6 +43,7 @@ func (s *Subscription) Publish(msg Message) error {
 		return errors.New("topic has been closed")
 	}
 	s.ch <- msg
+	return nil
 }
 
 type Topic struct {
